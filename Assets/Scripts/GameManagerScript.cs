@@ -8,7 +8,7 @@ public class GameManagerScript : MonoBehaviour {
 
     private void Start()
     {
-        int randomStart = Mathf.RoundToInt(Random.Range(1, 1.01f));
+        int randomStart = Mathf.RoundToInt(Random.Range(1, 2.01f));
         switch (randomStart)
         {
             case 1:
@@ -19,7 +19,7 @@ public class GameManagerScript : MonoBehaviour {
                 break;
         }
     }
-
+    
     public void SwitchTurns()
     {
         if (Player1.activePlayer)
