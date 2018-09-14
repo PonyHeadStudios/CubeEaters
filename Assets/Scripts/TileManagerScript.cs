@@ -12,6 +12,14 @@ public class TileManagerScript : MonoBehaviour {
         groundTilemap = GetComponent<Tilemap>();
     }
 
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log(groundTilemap.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition)));
+        }
+    }
+
     public bool CheckValidCell (Vector3 v3, out Vector3 newPos, out Vector3Int nextPos) 
     {
         Vector3Int worldPosInt = groundTilemap.WorldToCell(v3);
@@ -34,4 +42,5 @@ public class TileManagerScript : MonoBehaviour {
             return false;
         }            
     }
+
 }

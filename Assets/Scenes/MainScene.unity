@@ -1599,6 +1599,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player1: {fileID: 895089399}
   Player2: {fileID: 441177687}
+  tilemap: {fileID: 1798874951}
+  foodInstance: {fileID: 1848912014278106, guid: 5f0602a6f96519144a935d327d1e5ee2,
+    type: 2}
 --- !u!4 &1805610574
 Transform:
   m_ObjectHideFlags: 0
