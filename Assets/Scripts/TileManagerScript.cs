@@ -12,16 +12,25 @@ public class TileManagerScript : MonoBehaviour {
         groundTilemap = GetComponent<Tilemap>();
     }
 
-    public bool CheckValidCell (Vector3 v3, out Vector3 newPos) 
+    private void Update()
+    {
+    //TileChecker
+    /*    if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log(groundTilemap.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition)));
+        }   */
+    }
+
+    public bool CheckValidCell (Vector3 v3, out Vector3 newPos, out Vector3Int nextPos) 
     {
         Vector3Int worldPosInt = groundTilemap.WorldToCell(v3);
         Tile tileClicked = groundTilemap.GetTile<Tile>(worldPosInt);
-        newPos = groundTilemap.GetCellCenterWorld(worldPosInt);        
+        newPos = groundTilemap.GetCellCenterWorld(worldPosInt);
+        nextPos = worldPosInt;
         if (tileClicked != null)
         {
-            if (tileClicked.name == "Square") //Cuando haya mas cuadros, crear metodo de verificacion
+            if (tileClicked.name == "Square" || tileClicked.name == "Square 1") //Cuando haya mas cuadros, crear metodo de verificacion
             {
-                
                 return true;
             }
             else
@@ -34,4 +43,5 @@ public class TileManagerScript : MonoBehaviour {
             return false;
         }            
     }
+
 }
