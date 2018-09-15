@@ -11,7 +11,9 @@ public class GameManagerScript : MonoBehaviour {
     public Transform TransP1, TransP2;
     public Tilemap tilemap;
     public GameObject foodInstance;
+
     //Inits
+    private TurnControllerScript turnControllerReference;
     const int foodCount = 3;
     private Vector3 iniPos1;
     private Vector3 iniPos2;
@@ -19,6 +21,9 @@ public class GameManagerScript : MonoBehaviour {
                        gridSizeSmallEnd = new Vector3Int(2, 3, 0),
                        gridSizeCompleteInit = new Vector3Int(-5, 3, 0),
                        gridSizeCompleteEnd = new Vector3Int(4, -3, 0);
+
+    //Prefabs
+    public TurnControllerScript turnController;    
 
     private void Start()
     {
@@ -69,6 +74,11 @@ public class GameManagerScript : MonoBehaviour {
                 }
             }
         }
+        if (Input.GetKeyDown("space"))
+        {
+            clearTurn();
+        }
+        RegenerateFood();        
     }
     public void resetPositions()
     {
@@ -89,6 +99,10 @@ public class GameManagerScript : MonoBehaviour {
         {
             Player2.activePlayer = false;
             Player1.activePlayer = true;
+        }
+        if (turnControllerReference != null)
+        {
+            turnControllerReference.AddTurn();
         }
     }
     public void clearTurn()
@@ -138,5 +152,26 @@ public class GameManagerScript : MonoBehaviour {
             return false;
         }
         return false;
+    }
+
+    private void RegenerateFood()
+    {
+        if (turnControllerReference == null)
+        {
+            GameObject[] found = GameObject.FindGameObjectsWithTag("Food");
+            if (found.Length == 0)
+            {
+                turnControllerReference = Instantiate<TurnControllerScript>(turnController);
+                turnControllerReference.StartCount(5);                
+            }
+        }
+        else
+        {
+            if (turnControllerReference.IsOver())
+            {
+                GenerateFood(gridSizeCompleteInit, gridSizeCompleteEnd);
+                Destroy(turnControllerReference.gameObject);
+            } 
+        }
     }
 }

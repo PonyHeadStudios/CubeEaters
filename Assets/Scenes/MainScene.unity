@@ -180,7 +180,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0.0.5a3 EX
+  m_Text: 0.0.5a4
 --- !u!222 &62855032
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -198,7 +198,6 @@ GameObject:
   - component: {fileID: 355152559}
   - component: {fileID: 355152561}
   - component: {fileID: 355152562}
-  - component: {fileID: 355152560}
   m_Layer: 5
   m_Name: LivesPLayer1
   m_TagString: Untagged
@@ -224,18 +223,6 @@ RectTransform:
   m_AnchoredPosition: {x: 72.1, y: 77}
   m_SizeDelta: {x: 103.7, y: 31.299988}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &355152560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 355152558}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac72f2f166fe6864bbf76c64d53d06e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myUI: {fileID: 0}
 --- !u!222 &355152561
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -382,7 +369,6 @@ GameObject:
   - component: {fileID: 463028781}
   - component: {fileID: 463028783}
   - component: {fileID: 463028784}
-  - component: {fileID: 463028782}
   m_Layer: 5
   m_Name: LivesPLayer2
   m_TagString: Untagged
@@ -408,18 +394,6 @@ RectTransform:
   m_AnchoredPosition: {x: -70, y: -38.7}
   m_SizeDelta: {x: 103.69995, y: 31.3}
   m_Pivot: {x: 1, y: 1}
---- !u!114 &463028782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 463028780}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac72f2f166fe6864bbf76c64d53d06e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myUI: {fileID: 0}
 --- !u!222 &463028783
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1761,8 +1735,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1805610574}
-  - component: {fileID: 1805610573}
   - component: {fileID: 1805610575}
+  - component: {fileID: 1805610573}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1788,6 +1762,8 @@ MonoBehaviour:
   TransP2: {fileID: 444898320}
   tilemap: {fileID: 1798874951}
   foodInstance: {fileID: 1848912014278106, guid: 5f0602a6f96519144a935d327d1e5ee2,
+    type: 2}
+  turnController: {fileID: 114626914495278124, guid: 1450a9ee60c120444b152e9be7bb81fa,
     type: 2}
 --- !u!4 &1805610574
 Transform:
