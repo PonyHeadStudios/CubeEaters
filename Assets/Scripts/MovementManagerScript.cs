@@ -4,19 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class MovementManagerScript : MonoBehaviour {
-
+    //Inits
     const int maxMov = 3;
-    private Text movementsText;
     private int actualMov = maxMov;
-
-    private void Start()
-    {
-        movementsText = GetComponent<Text>();
-    }
+    //Ref scripts
+    public UIHandler myUI;
 
     private void Update()
     {
-        movementsText.text = actualMov.ToString();
+        myUI.updateMovs(actualMov);
     }
 
     public void UsedMovs()

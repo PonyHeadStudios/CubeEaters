@@ -5,11 +5,16 @@ using UnityEngine.Tilemaps;
 
 public class GameManagerScript : MonoBehaviour {
 
+    //Ref scripts
+    public MovementManagerScript movementManager;
     public MovementScript Player1, Player2;
+    public Transform TransP1, TransP2;
     public Tilemap tilemap;
     public GameObject foodInstance;
-
+    //Inits
     const int foodCount = 3;
+    private Vector3 iniPos1;
+    private Vector3 iniPos2;
     private Vector3Int gridSizeSmallInit = new Vector3Int (-3, -3, 0),
                        gridSizeSmallEnd = new Vector3Int(2, 3, 0),
                        gridSizeCompleteInit = new Vector3Int(-5, 3, 0),
@@ -28,8 +33,51 @@ public class GameManagerScript : MonoBehaviour {
                 break;
         }
         GenerateFood(gridSizeSmallInit, gridSizeSmallEnd);
+        iniPos1 = TransP1.position;
+        iniPos2 = TransP2.position;
     }
-    
+
+    private void Update()
+    {
+        if (TransP1.position.Equals(TransP2.position)) 
+        {
+            if (Player1.getMass() > Player2.getMass())
+            {
+                if (!Player2.GetComponent<LivesHandler>().removeLife())
+                {
+                    //perdio el 2
+                }
+                else
+                {
+                    GetComponent<UIHandler>().updateScreen();
+                    resetPositions();
+                }
+            }
+            else
+            {
+                if (Player1.getMass() < Player2.getMass())
+                {
+                    if (!Player1.GetComponent<LivesHandler>().removeLife())
+                    {
+                        //perdio el 1
+                    }
+                    else
+                    {
+                        GetComponent<UIHandler>().updateScreen();
+                        resetPositions();
+                    }
+                }
+            }
+        }
+    }
+    public void resetPositions()
+    {
+        TransP1.position = iniPos1;
+        TransP2.position = iniPos2;
+        Player1.resetTile();
+        Player2.resetTile();
+        clearTurn();
+    }
     public void SwitchTurns()
     {
         if (Player1.activePlayer)
@@ -42,6 +90,11 @@ public class GameManagerScript : MonoBehaviour {
             Player2.activePlayer = false;
             Player1.activePlayer = true;
         }
+    }
+    public void clearTurn()
+    {
+        SwitchTurns();
+        movementManager.resetMovs();
     }
 
     private void GenerateFood(Vector3Int first, Vector3Int last)

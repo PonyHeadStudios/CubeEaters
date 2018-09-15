@@ -16,7 +16,7 @@ public class MovementScript : MonoBehaviour {
 
     private void Start()
     {
-        myTile = tileMap.WorldToCell(transform.position);
+        resetTile();
     }
 
     void Update ()
@@ -53,6 +53,20 @@ public class MovementScript : MonoBehaviour {
         {
             return true;
         }
+        if ((Mathf.Abs(myTile.y - nextPos.y) == 1) && (Mathf.Abs(myTile.x - nextPos.x) == 1))
+        {
+            return true;
+        }
             return false;
+    }
+
+    public int getMass()
+    {
+        return mass;
+    }
+
+    public void resetTile()
+    {
+        myTile = tileMap.WorldToCell(transform.position);
     }
 }
