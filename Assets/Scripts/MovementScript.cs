@@ -12,6 +12,8 @@ public class MovementScript : MonoBehaviour {
     public bool activePlayer = false;
     private Vector3Int myTile;
 
+    private int mass = 0;
+
     private void Start()
     {
         myTile = tileMap.WorldToCell(transform.position);
@@ -35,6 +37,11 @@ public class MovementScript : MonoBehaviour {
             }                  
         }
 	}
+
+    public void UpdateMass()
+    {
+        mass++;
+    }
 
     private bool CheckAdjacent(Vector3Int nextPos)
     {

@@ -14,10 +14,11 @@ public class TileManagerScript : MonoBehaviour {
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+    //TileChecker
+    /*    if (Input.GetMouseButtonDown(0))
         {
             Debug.Log(groundTilemap.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition)));
-        }
+        }   */
     }
 
     public bool CheckValidCell (Vector3 v3, out Vector3 newPos, out Vector3Int nextPos) 
