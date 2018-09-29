@@ -13,16 +13,18 @@ public class UIHandler : MonoBehaviour {
     public LivesHandler livesp1;
     public LivesHandler livesp2;
 
-    public void updateMovs(int n)
+    public void updateMovs(int movs,int max)
     {
-        leftMovesUI.text = n.ToString();
-        checkTextBG(leftMovesUI);
+        leftMovesUI.text = movs.ToString();
+        if (movs==max)
+            checkTextBG(leftMovesUI);
     }
 
     private void checkTextBG(Text t)
     {
         Image leftMovsBG = t.GetComponentInParent<Image>();
         GameObject[] p = GameObject.FindGameObjectsWithTag("Player");
+        Debug.Log(p.Length+"");
         for (int i = 0; i < p.Length; i++)
         {
             if (p[i].GetComponent<MovementScript>().activePlayer)

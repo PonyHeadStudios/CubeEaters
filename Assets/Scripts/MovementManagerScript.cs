@@ -12,7 +12,7 @@ public class MovementManagerScript : MonoBehaviour {
 
     private void Update()
     {
-        myUI.updateMovs(actualMov);
+        myUI.updateMovs(actualMov,maxMov);
     }
 
     public void UsedMovs()
