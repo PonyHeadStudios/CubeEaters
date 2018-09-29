@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114402292877453208}
   m_Layer: 0
   m_Name: Food
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,7 +36,7 @@ Transform:
   m_GameObject: {fileID: 1848912014278106}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -2.48, y: 1.56, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -52,6 +52,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 957d69be41789824a82deaa46b42396a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 41f37c7d7a8e77b4e9b9d2cd2b617504, type: 3}
+  - {fileID: 21300000, guid: f610537d95a1a2e4e8ddb55d2a4051cb, type: 3}
+  - {fileID: 21300000, guid: b161bb08a6609da418c046682020e507, type: 3}
 --- !u!212 &212935165568339008
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -88,11 +92,11 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 16b2dc28d6111d44eada84449837a593, type: 3}
-  m_Color: {r: 0.7264151, g: 0.5076188, b: 0.065103225, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.8, y: 0.8}
+  m_Size: {x: 1.28, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

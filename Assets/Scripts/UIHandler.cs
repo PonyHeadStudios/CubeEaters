@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIHandler : MonoBehaviour {
     //ref UI
@@ -15,6 +16,21 @@ public class UIHandler : MonoBehaviour {
     public void updateMovs(int n)
     {
         leftMovesUI.text = n.ToString();
+        checkTextBG(leftMovesUI);
+    }
+
+    private void checkTextBG(Text t)
+    {
+        Image leftMovsBG = t.GetComponentInParent<Image>();
+        GameObject[] p = GameObject.FindGameObjectsWithTag("Player");
+        for (int i = 0; i < p.Length; i++)
+        {
+            if (p[i].GetComponent<MovementScript>().activePlayer)
+            {
+                SpriteRenderer render = p[i].GetComponent<SpriteRenderer>();
+                leftMovsBG.color = render.color;
+            }
+        }
     }
 
     public void updateScreen()

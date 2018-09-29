@@ -102,7 +102,7 @@ public class GameManagerScript : MonoBehaviour {
         Vector3Int random1, random2, random3;
         RandomV3Int(out random1, out random2, out random3, first, last);
         Quaternion defaultQ = new Quaternion(0,0,0,0);
-        Instantiate(foodInstance, tilemap.GetCellCenterWorld(random1),defaultQ);
+        Instantiate(foodInstance, tilemap.GetCellCenterWorld(random1), defaultQ);
         Instantiate(foodInstance, tilemap.GetCellCenterWorld(random2), defaultQ);
         Instantiate(foodInstance, tilemap.GetCellCenterWorld(random3), defaultQ);
     }
