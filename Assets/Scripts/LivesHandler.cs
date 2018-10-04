@@ -7,17 +7,7 @@ public class LivesHandler : MonoBehaviour {
     private const int defLives = 3;
     private int lives = defLives;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-    public bool removeLife()
+    public bool RemoveLife()
     {
         if (lives == 0)
         {
@@ -30,13 +20,26 @@ public class LivesHandler : MonoBehaviour {
         }
     }
 
-    public override string ToString()
+    public bool AddLife()
     {
-        string aux = "";
-        for (int i = lives; i > 0; i--)
+        if (lives < defLives + 2)
         {
-            aux += "I";
+            return false;
         }
-        return aux;
+        else
+        {
+            lives++;
+            return true;
+        }
+    }
+
+    public int getDefLives()
+    {
+        return defLives;
+    }
+
+    public int getLeftLives()
+    {
+        return lives;
     }
 }

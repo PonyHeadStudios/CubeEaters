@@ -33,8 +33,9 @@ public class MovementScript : MonoBehaviour {
                     transform.position = newPos;
                     movementManager.UsedMovs();
                     myTile = tileMap.WorldToCell(transform.position);
-                }                
-            }                  
+                }  
+                
+            }               
         }
 	}
 

@@ -39,11 +39,20 @@ public class GameManagerScript : MonoBehaviour {
 
     private void Update()
     {
-        if (TransP1.position.Equals(TransP2.position)) 
+        CompareMass(); //Compare P1 & P2 Positions to detect a Collision
+    }
+
+    
+
+
+
+    private void CompareMass()
+    {
+        if (TransP1.position.Equals(TransP2.position))
         {
             if (Player1.getMass() > Player2.getMass())
             {
-                if (!Player2.GetComponent<LivesHandler>().removeLife())
+                if (!Player2.GetComponent<LivesHandler>().RemoveLife())
                 {
                     //perdio el 2
                 }
@@ -57,7 +66,7 @@ public class GameManagerScript : MonoBehaviour {
             {
                 if (Player1.getMass() < Player2.getMass())
                 {
-                    if (!Player1.GetComponent<LivesHandler>().removeLife())
+                    if (!Player1.GetComponent<LivesHandler>().RemoveLife())
                     {
                         //perdio el 1
                     }
@@ -70,6 +79,7 @@ public class GameManagerScript : MonoBehaviour {
             }
         }
     }
+
     public void resetPositions()
     {
         TransP1.position = iniPos1;

@@ -6,9 +6,15 @@ using UnityEngine.Tilemaps;
 public class TileManagerScript : MonoBehaviour {
 
     private Tilemap groundTilemap;
+    public TileBehaviour tileBehaviour = new TileBehaviour();
+    public TileData[] tileLoads = new TileData[0];
 
     private void Start()
     {
+        for (int i = 0; i < tileLoads.Length; i++)
+        {
+            tileBehaviour.AddTile(tileLoads[i]);
+        }
         groundTilemap = GetComponent<Tilemap>();
     }
 
@@ -29,19 +35,60 @@ public class TileManagerScript : MonoBehaviour {
         nextPos = worldPosInt;
         if (tileClicked != null)
         {
-            if (tileClicked.name == "Square" || tileClicked.name == "Square 1") //Cuando haya mas cuadros, crear metodo de verificacion
+            TileData data = tileBehaviour.FindTile(tileClicked.name);
+            if (data != null)
             {
-                return true;
+                return data.isValid;
             }
-            else
-            {
-                return false;
-            }
+            else return false;
         }
-        else
-        {
-            return false;
-        }            
+        else return false;           
     }
 
+    public class TileBehaviour
+    {
+        private ArrayList tileData = new ArrayList();
+
+        //Methods-----------
+
+            public void AddTile(TileData tile)
+        {
+            tileData.Add(tile);
+        }
+
+        public TileData FindTile(string name)
+        {
+            TileData auxTile = null;
+            foreach (var item in tileData)
+            {
+                if (item != null)
+                {
+                    auxTile = (TileData)item;
+                    if (auxTile.id == name)
+                        return auxTile;
+                }
+
+            }
+            return null;
+        }
+    }
+    [CreateAssetMenu()]
+    public class TileData : ScriptableObject
+    {
+        public string id;
+        public bool isValid = true;
+        public bool isImmediate = true;
+
+        public void Action(LivesHandler p)
+        {
+            
+            switch (id)
+            {
+                case "Circle":
+                
+                default:
+                {} break;
+            }
+        }
+    }
 }
